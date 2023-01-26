@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+
+  .title {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem;
+    font-weight: 600;
+    width: 30vw;
+
+    .nav-link {
+      text-decoration: none;
+      color: #000;
+
+      &:hover {
+        color: #444;
+      }
+    }
+  }
+}
