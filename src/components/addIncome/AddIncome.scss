@@ -1,0 +1,49 @@
+$addFontSize: 2.5rem;
+$addWidth: 20rem;
+$addLineheight: 1.5;
+
+.add-income {
+  margin-top: 3rem;
+
+  h2 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  form {
+    display: flex;
+
+    textarea {
+      font-family: Inter;
+      font-size: $addFontSize;
+      line-height: 1.4;
+      border: solid #222 2px;
+      resize: none;
+      margin-right: 1rem;
+    }
+
+    .type-and-value {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      input {
+        font-size: $addFontSize;
+        width: $addWidth;
+        line-height: $addLineheight;
+      }
+
+      select {
+        font-size: $addFontSize;
+        width: $addWidth;
+        height: calc($addFontSize * $addLineheight);
+      }
+
+      button {
+        font-size: $addFontSize;
+        width: $addWidth;
+        line-height: $addLineheight;
+      }
+    }
+  }
+}

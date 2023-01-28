@@ -2,17 +2,16 @@ import React, { FC } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Navigation.scss";
 
-const Navigation: FC = (str) => {
+const Navigation: FC = () => {
   return (
     <>
       <nav className="container">
-        <div className="title">Wallet</div>
+        <h1 className="title">
+          <Link className="nav-link" to="/home">
+            Wallet
+          </Link>
+        </h1>
         <ul>
-          <li>
-            <Link className="nav-link" to="/info">
-              Info
-            </Link>
-          </li>
           <li>
             <Link className="nav-link" to="/settings">
               Settings

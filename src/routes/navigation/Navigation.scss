@@ -16,14 +16,14 @@ nav {
     font-size: 2rem;
     font-weight: 600;
     width: 30vw;
+  }
 
-    .nav-link {
-      text-decoration: none;
-      color: #000;
+  .nav-link {
+    text-decoration: none;
+    color: #000;
 
-      &:hover {
-        color: #444;
-      }
+    &:hover {
+      color: #444;
     }
   }
 }
