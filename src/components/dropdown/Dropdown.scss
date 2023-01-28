@@ -1,0 +1,41 @@
+$addFontSize: 2.5rem;
+$addWidth: 20rem;
+$addLineheight: 1.5;
+
+.dropdown-current {
+  //   border: solid #222 2px;
+  //   background-color: aliceblue;
+  position: relative;
+
+  div {
+    cursor: pointer;
+    background-color: #fff;
+    border: solid #222 2px;
+    font-size: $addFontSize;
+    width: $addWidth;
+    line-height: $addLineheight;
+
+    &:hover,
+    &.opened {
+      background-color: #222;
+      color: #fff;
+    }
+  }
+
+  ul {
+    position: absolute;
+    list-style-type: none;
+    li {
+      cursor: pointer;
+      background-color: #fff;
+      border: solid #222 2px;
+      font-size: $addFontSize;
+      width: $addWidth;
+      line-height: $addLineheight;
+      &:hover {
+        background-color: #222;
+        color: #fff;
+      }
+    }
+  }
+}

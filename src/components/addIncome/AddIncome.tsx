@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import Button, { buttonStyle } from "../button/Button";
+import Dropdown from "../dropdown/Dropdown";
 import "./AddIncome.scss";
 
 interface IIncome {
@@ -12,6 +13,8 @@ type handleChangeEvent =
   | ChangeEvent<HTMLSelectElement>
   | ChangeEvent<HTMLInputElement>
   | ChangeEvent<HTMLTextAreaElement>;
+
+const options = ["freelance", "job1"];
 
 const AddIncome = () => {
   const [type, setType] = useState<string>("freelance");
@@ -57,10 +60,17 @@ const AddIncome = () => {
           value={description}
         ></textarea>
         <div className="type-and-value">
-          <select name="income-type" value={type} onChange={handleChangeInput}>
+          <Dropdown
+            currentOption={type}
+            options={options}
+            changeCurrentOption={(index: number) => {
+              setType(options[index]);
+            }}
+          />
+          {/* <select name="income-type" value={type} onChange={handleChangeInput}>
             <option value="freelance">freelance</option>
             <option value="job1">job1</option>
-          </select>
+          </select> */}
           <input
             type="number"
             name="income-number"
