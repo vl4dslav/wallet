@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "./Dropdown.scss";
-
-interface IDropdownProps {
-  currentOption: string;
-  options: Array<string>;
-  changeCurrentOption: (index: number) => void;
-}
+import { IDropdownProps } from "../../store/interfaces";
 
 const Dropdown: React.FC<IDropdownProps> = ({
   currentOption,

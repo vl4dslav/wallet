@@ -1,49 +1,47 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import Button, { buttonStyle } from "../button/Button";
+import Button from "../button/Button";
 import Dropdown from "../dropdown/Dropdown";
+import NumberInput from "../numberInput/NumberInput";
 import "./AddIncome.scss";
-
-interface IIncome {
-  description: string;
-  type: string;
-  value: number | null;
-}
+import { IIncome, buttonStyle } from "../../store/interfaces";
+import { useDispatch } from "react-redux";
+import { addIncome } from "../../store/store";
 
 type handleChangeEvent =
   | ChangeEvent<HTMLSelectElement>
   | ChangeEvent<HTMLInputElement>
   | ChangeEvent<HTMLTextAreaElement>;
 
-const options = ["freelance", "job1"];
+const options = ["freelance", "job", "gift"];
+
+const currencyValues = ["rub", "usd"];
 
 const AddIncome = () => {
+  const dispatch = useDispatch();
+  const [currency, setCurrency] = useState<string>("rub");
   const [type, setType] = useState<string>("freelance");
   const [description, setDescription] = useState<string>("");
-  const [value, setValue] = useState<number | null>(null);
-  const [incomeList, setIncomeList] = useState<Array<IIncome>>([]);
+  const [value, setValue] = useState<number>(0);
+
   const refresh = () => {
-    setType("");
+    setType("freelance");
     setDescription("");
-    setValue(null);
+    setCurrency("rub");
+    setValue(0);
   };
-  const handleChangeInput = (e: handleChangeEvent) => {
-    switch (e.target.name) {
-      case "income-type":
-        setType(e.target.value);
-        break;
-      case "income-number":
-        setValue(+e.target.value);
-        break;
-      case "income-description":
-        setDescription(e.target.value);
-        break;
-    }
-  };
+
+  const handleChangeInput = (e: handleChangeEvent) =>
+    setDescription(e.target.value);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newIncomeList = ([] as Array<IIncome>).concat(incomeList);
-    newIncomeList.push({ type, description, value });
-    setIncomeList(newIncomeList);
+    dispatch(
+      addIncome({
+        // type: "add",
+        // payload: { type, description, value, currency },
+        type, description, value, currency
+      })
+    );
     refresh();
   };
 
@@ -63,22 +61,21 @@ const AddIncome = () => {
           <Dropdown
             currentOption={type}
             options={options}
-            changeCurrentOption={(index: number) => {
-              setType(options[index]);
-            }}
+            changeCurrentOption={(index) => setType(options[index])}
           />
-          {/* <select name="income-type" value={type} onChange={handleChangeInput}>
-            <option value="freelance">freelance</option>
-            <option value="job1">job1</option>
-          </select> */}
-          <input
-            type="number"
-            name="income-number"
-            onChange={handleChangeInput}
-            value={value || ""}
-            min={0}
+
+          <Dropdown
+            currentOption={currency}
+            options={currencyValues}
+            changeCurrentOption={(index) => setCurrency(currencyValues[index])}
           />
-          {/* <button type="submit">add income</button> */}
+
+          <NumberInput
+            max={100000000}
+            value={value}
+            changeCurrentValue={(newValue) => setValue(newValue)}
+          />
+
           <Button
             type="submit"
             style={buttonStyle.standart}

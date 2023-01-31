@@ -1,0 +1,18 @@
+$addWidth: 20rem;
+.number-input {
+  display: flex;
+  width: $addWidth;
+  background-color: aquamarine;
+  input {
+    display: block;
+    text-align: center;
+    width: calc($addWidth * 0.6) !important;
+  }
+  button {
+    cursor: pointer;
+    &:hover {
+      background-color: #222;
+      color: #fff;
+    }
+  }
+}

@@ -1,17 +1,6 @@
 import React from "react";
 import "./Button.scss";
-
-export enum buttonStyle {
-  standart,
-  reverse,
-}
-
-interface IButtonProps {
-  type: "button" | "submit" | "reset" | undefined;
-  style: buttonStyle;
-  content: string;
-  handleClick?: () => void;
-}
+import { buttonStyle, IButtonProps } from "../../store/interfaces";
 
 const Button: React.FC<IButtonProps> = ({
   style,

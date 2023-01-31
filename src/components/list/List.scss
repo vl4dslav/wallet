@@ -1,0 +1,48 @@
+$addFontSize: 2.5rem;
+$addWidth: 20rem;
+$addLineheight: 1.5;
+$marginTop: 3rem;
+$border: solid #000 3px;
+
+ul.list-income {
+  list-style: none;
+  font-size: $addFontSize;
+  margin: $marginTop auto;
+  display: flex;
+  flex-direction: column;
+  border: solid #000 4px;
+  li {
+    line-height: 1.4;
+    width: 20vw;
+    // border-bottom: $border;
+    // padding: $marginTop 0;
+
+    &:last-child {
+      border: none;
+    }
+
+    .type-value {
+      padding: $marginTop 0;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      gap: 1vw;
+      transition: all 0.3s;
+
+      &:hover {
+        color: #fff;
+        background-color: #000;
+        cursor: pointer;
+      }
+    }
+
+    .description {
+      border-top: $border;
+      border-bottom: $border;
+      display: block;
+      word-wrap: break-word;
+      padding: 2vh 0;
+    }
+  }
+}

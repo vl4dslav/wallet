@@ -1,9 +1,10 @@
 $addFontSize: 2.5rem;
 $addWidth: 20rem;
 $addLineheight: 1.5;
+$marginTop: 3rem;
 
 .add-income {
-  margin-top: 3rem;
+  margin-top: $marginTop;
 
   h2 {
     font-size: 3.5rem;
