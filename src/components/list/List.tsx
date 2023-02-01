@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { IIncome, IListProps } from "../../store/interfaces";
-// import { StateIncome } from "../../store/store";
+import { IAllStats, IIncome, IListProps } from "../../store/interfaces";
 import "./List.scss";
 
 const List: React.FC<IListProps> = ({ type }) => {
-  const list = useSelector((state: any) => state.income); //state type any
+  const list = useSelector((state: any) => state.income.currentStats.income); //state: any
 
   const [visibility, setVisibility] = useState<boolean[]>([]);
 

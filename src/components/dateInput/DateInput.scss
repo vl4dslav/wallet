@@ -1,0 +1,47 @@
+$addWidth: 6vw;
+
+.date-section {
+  //   display: flex;
+  //   justify-content: center;
+  h2 {
+    font-size: 5vh;
+    text-align: center;
+  }
+
+  .inputs {
+    display: flex;
+    // background-color: brown;
+    gap: 2vw;
+    .number-input {
+      display: flex;
+      width: $addWidth;
+      input {
+        font-size: 3vh;
+        text-align: center;
+        width: calc($addWidth * 0.6) !important;
+      }
+      button {
+        font-size: 3vh;
+        width: calc($addWidth * 0.4);
+      }
+    }
+  }
+
+  .change-income-date {
+    border: none;
+    border-radius: 4%;
+    background-color: #ddd;
+    width: 4vw;
+    padding: 1.5vh 0;
+    font-size: 2vh;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &:hover {
+      color: #eee;
+      background-color: #222;
+      box-shadow: 1px 2px 5px 1px #333;
+    }
+  }
+}

@@ -5,6 +5,13 @@ export interface IIncome {
   currency: string;
 }
 
+export interface IExpense {
+  description: string;
+  type: string;
+  value: number;
+  currency: string;
+}
+
 export enum buttonStyle {
   standart,
   reverse,
@@ -38,6 +45,24 @@ export enum listType {
   income = "income",
   expense = "expense",
 }
+
+export type IDate = {
+  day: number;
+  month: number;
+  year: number;
+  correct: () => boolean;
+};
+
+export type IStats = {
+  date: IDate;
+  income: IIncome[];
+};
+
+export interface IAllStats {
+  stats: IStats[];
+  currentStats: IStats;
+}
+
 // export enum incomeActionTypes {
 //   add = "add",
 //   delete = "delete",

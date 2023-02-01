@@ -39,7 +39,10 @@ const AddIncome = () => {
       addIncome({
         // type: "add",
         // payload: { type, description, value, currency },
-        type, description, value, currency
+        type,
+        description,
+        value,
+        currency,
       })
     );
     refresh();
