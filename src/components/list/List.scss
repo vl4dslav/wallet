@@ -4,7 +4,10 @@ $addLineheight: 1.5;
 $marginTop: 3rem;
 $border: solid #000 3px;
 
-ul.list-income {
+ul.list-income,
+ul.list-expense {
+  min-height: 46vh;
+  min-width: 30vw;
   list-style: none;
   font-size: $addFontSize;
   margin: $marginTop auto;
@@ -13,18 +16,18 @@ ul.list-income {
   border: solid #000 4px;
   li {
     line-height: 1.4;
-    width: 20vw;
+    width: 30vw;
 
     &:last-child {
       border: none;
     }
 
     .type-value {
-      padding: $marginTop 0;
+      padding: $marginTop 5%;
       text-transform: uppercase;
       font-weight: 600;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 1vw;
       transition: all 0.3s;
 
@@ -32,6 +35,11 @@ ul.list-income {
         color: #fff;
         background-color: #000;
         cursor: pointer;
+      }
+
+      button {
+        width: 20%;
+        font-size: 1.5rem;
       }
     }
 

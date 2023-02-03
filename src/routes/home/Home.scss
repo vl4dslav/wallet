@@ -1,4 +1,12 @@
-.home {
+.home-main {
+  padding-top: 5vh;
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
+
+  &.income {
+    flex-direction: row-reverse;
+  }
+  &.expense {
+    flex-direction: row;
+  }
 }

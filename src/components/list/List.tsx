@@ -1,10 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { IAllStats, IIncome, IListProps } from "../../store/interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  IExpense,
+  IIncome,
+  IListProps,
+  statType,
+} from "../../store/interfaces";
+import { deleteExpense, deleteIncome } from "../../store/statsSlice";
+import { RootState } from "../../store/store";
+import Button from "../button/Button";
+import { buttonStyle } from "../../store/interfaces";
 import "./List.scss";
 
 const List: React.FC<IListProps> = ({ type }) => {
-  const list = useSelector((state: any) => state.income.currentStats.income); //state: any
+  const dispatch = useDispatch();
+  const list = useSelector((state: RootState) => {
+    const curr = state.stats.currentStats;
+    return type === statType.income ? curr.income : curr.expense;
+  });
 
   const [visibility, setVisibility] = useState<boolean[]>([]);
 
@@ -15,17 +28,27 @@ const List: React.FC<IListProps> = ({ type }) => {
 
   return (
     <ul className={`list-${type}`}>
-      {list.map((incomeItem: IIncome, index: number) => {
+      {list.map((statItem: IExpense | IIncome, index: number) => {
         if (visibility.length <= index)
           setVisibility((prev) => prev.concat([false]));
         return (
           <li key={index}>
             <div className="type-value" onClick={() => changeVisibility(index)}>
-              <div className="type">{incomeItem.type}</div>
-              <div className="value">{incomeItem.value}</div>
+              <div className="type">{statItem.type}</div>
+              <div className="value">{`${statItem.value} ${statItem.currency}`}</div>
+              <Button
+                content="delete"
+                style={buttonStyle.reverse}
+                type="button"
+                handleClick={() =>
+                  type === statType.income
+                    ? dispatch(deleteIncome(index))
+                    : dispatch(deleteExpense(index))
+                }
+              />
             </div>
             {visibility[index] ? (
-              <p className="description">{incomeItem.description}</p>
+              <p className="description">{statItem.description}</p>
             ) : (
               <></>
             )}

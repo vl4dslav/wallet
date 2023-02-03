@@ -2,21 +2,16 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../button/Button";
 import Dropdown from "../dropdown/Dropdown";
 import NumberInput from "../numberInput/NumberInput";
-import "./AddIncome.scss";
-import { IIncome, buttonStyle } from "../../store/interfaces";
+import "./AddStat.scss";
+import { buttonStyle, IAddStat } from "../../store/interfaces";
 import { useDispatch } from "react-redux";
-import { addIncome } from "../../store/store";
-
-type handleChangeEvent =
-  | ChangeEvent<HTMLSelectElement>
-  | ChangeEvent<HTMLInputElement>
-  | ChangeEvent<HTMLTextAreaElement>;
+import { addStat } from "../../store/statsSlice";
 
 const options = ["freelance", "job", "gift"];
 
 const currencyValues = ["rub", "usd"];
 
-const AddIncome = () => {
+const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
   const dispatch = useDispatch();
   const [currency, setCurrency] = useState<string>("rub");
   const [type, setType] = useState<string>("freelance");
@@ -30,30 +25,28 @@ const AddIncome = () => {
     setValue(0);
   };
 
-  const handleChangeInput = (e: handleChangeEvent) =>
+  const handleChangeInput = (e: ChangeEvent<HTMLTextAreaElement>) =>
     setDescription(e.target.value);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(
-      addIncome({
-        // type: "add",
-        // payload: { type, description, value, currency },
+      addStat({
         type,
         description,
         value,
         currency,
+        typeOfStat: Addtype,
       })
     );
     refresh();
   };
 
   return (
-    <section className="add-income">
-      <h2>Add new income</h2>
+    <section className="add-stat">
+      <h2 onClick={changeAddType}>{`Add new ${Addtype}`}</h2>
       <form onSubmit={handleSubmit}>
         <textarea
-          name="income-description"
           cols={24}
           rows={8}
           onChange={handleChangeInput}
@@ -82,7 +75,7 @@ const AddIncome = () => {
           <Button
             type="submit"
             style={buttonStyle.standart}
-            content={`add income`}
+            content={`add ${Addtype}`}
           />
         </div>
       </form>
@@ -90,4 +83,4 @@ const AddIncome = () => {
   );
 };
 
-export default AddIncome;
+export default AddStat;

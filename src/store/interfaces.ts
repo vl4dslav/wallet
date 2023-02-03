@@ -1,15 +1,30 @@
-export interface IIncome {
-  description: string;
-  type: string;
-  value: number;
-  currency: string;
+export enum statType {
+  income = "income",
+  expense = "expense",
 }
 
-export interface IExpense {
+interface IStat {
   description: string;
   type: string;
   value: number;
   currency: string;
+  typeOfStat: statType;
+}
+
+export interface IExpense extends IStat {
+  description: string;
+  type: string;
+  value: number;
+  currency: string;
+  typeOfStat: statType.expense;
+}
+
+export interface IIncome extends IStat {
+  description: string;
+  type: string;
+  value: number;
+  currency: string;
+  typeOfStat: statType.income;
 }
 
 export enum buttonStyle {
@@ -38,29 +53,29 @@ export interface INumberInputProps {
 }
 
 export interface IListProps {
-  type: listType;
-}
-
-export enum listType {
-  income = "income",
-  expense = "expense",
+  type: statType;
 }
 
 export type IDate = {
   day: number;
   month: number;
   year: number;
-  correct: () => boolean;
 };
 
-export type IStats = {
+export type IStatsWithDate = {
   date: IDate;
   income: IIncome[];
+  expense: IExpense[];
 };
 
 export interface IAllStats {
-  stats: IStats[];
-  currentStats: IStats;
+  stats: IStatsWithDate[];
+  currentStats: IStatsWithDate;
+}
+
+export interface IAddStat {
+  Addtype: statType;
+  changeAddType: () => void;
 }
 
 // export enum incomeActionTypes {
