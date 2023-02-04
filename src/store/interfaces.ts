@@ -78,6 +78,11 @@ export interface IAddStat {
   changeAddType: () => void;
 }
 
+export interface ISettingsState {
+  firstDate: IDate;
+  secondDate: IDate;
+  calendar: IDate;
+}
 // export enum incomeActionTypes {
 //   add = "add",
 //   delete = "delete",

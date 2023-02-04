@@ -9,6 +9,12 @@ $marginTop: 3rem;
   h2 {
     font-size: 3.5rem;
     margin-bottom: 3rem;
+
+    &:hover {
+      color: #333;
+      text-shadow: rgba(34, 34, 34, 0.3) 1px 1px 20px;
+      cursor: pointer;
+    }
   }
 
   form {

@@ -2,6 +2,8 @@ import { IAllStats, IDate } from "./interfaces";
 
 const currentDate = new Date();
 
+export const currentWeekday = currentDate.getDay();
+
 export const defaultDate: IDate = {
   day: currentDate.getDate(),
   month: currentDate.getMonth() + 1,
@@ -35,3 +37,6 @@ export const defaultStats: IAllStats = {
     expense: [],
   },
 };
+
+export const daysInMonth = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //dec, jan, ... , dec
+export const week = ["s", "m", "t", "w", "t", "f", "s"];

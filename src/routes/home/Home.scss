@@ -1,12 +1,25 @@
-.home-main {
-  padding-top: 5vh;
-  display: flex;
-  align-items: flex-start;
+.home {
+  .home-main {
+    padding-top: 5vh;
+    display: flex;
+    align-items: flex-start;
 
-  &.income {
-    flex-direction: row-reverse;
+    &.income {
+      flex-direction: row-reverse;
+    }
+    &.expense {
+      flex-direction: row;
+    }
   }
-  &.expense {
-    flex-direction: row;
+
+  .home-btns {
+    margin-top: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      width: 20vw;
+      height: 10vh;
+      font-size: 3rem;
+    }
   }
 }

@@ -1,0 +1,35 @@
+.calendar {
+  width: 40vw;
+  height: 50vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 3rem;
+
+  .calendar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .weekday {
+    background-color: #eee;
+    color: #222;
+    text-transform: uppercase;
+    border-left: #222 solid 2px;
+    border-bottom: #222 solid 2px;
+    &:first-child {
+      border-left: none;
+    }
+  }
+
+  .day {
+    cursor: pointer;
+    background-color: #222;
+    color: #eee;
+    &:hover {
+      background-color: #eee;
+      color: #222;
+    }
+  }
+}
