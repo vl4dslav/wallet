@@ -48,7 +48,9 @@ export const compareDates = (date1: IDate, date2: IDate) =>
 
 export const operatorLessDates = (date1: IDate, date2: IDate) => {
   if (date1.year < date2.year) return -1;
+  if (date1.year > date2.year) return 1;
   if (date1.month < date2.month) return -1;
+  if (date1.month > date2.month) return 1;
   if (date1.day < date2.day) return -1;
   return 1;
 };
