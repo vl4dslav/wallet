@@ -1,12 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { defaultStats } from "./defaultValues";
 import { IAllStats, IDate, IExpense, IIncome, statType } from "./interfaces";
-
-const compareDates = (date1: IDate, date2: IDate) =>
-  date1.day === date2.day &&
-  date1.month === date2.month &&
-  date1.year === date2.year;
-
+import { compareDates } from "./defaultValues";
 const isIncome = (item: IIncome | IExpense): item is IIncome => {
   if (item.typeOfStat === statType.income) return true;
   return false;

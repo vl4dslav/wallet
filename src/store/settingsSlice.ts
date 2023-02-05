@@ -1,29 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { defaultDate } from "./defaultValues";
+import { defaultDate, operatorLessDates } from "./defaultValues";
 import {
-  IAllStats,
+  // IAllStats,
   IDate,
-  IExpense,
-  IIncome,
+  // IExpense,
+  // IIncome,
   ISettingsState,
 } from "./interfaces";
 
-const defaultSecondDate = (): IDate => {
-  if (defaultDate.month === 1)
-    return {
-      ...defaultDate,
-      month: 12,
-      year: defaultDate.year - 1,
-    };
-  return {
-    ...defaultDate,
-    month: defaultDate.month - 1,
-  };
-};
+// const defaultSecondDate = (): IDate => {
+//   if (defaultDate.month === 1)
+//     return {
+//       ...defaultDate,
+//       month: 12,
+//       year: defaultDate.year - 1,
+//     };
+//   return {
+//     ...defaultDate,
+//     month: defaultDate.month - 1,
+//   };
+// };
 
-const defaultState = {
-  firstDate: defaultDate,
-  secondDate: defaultSecondDate(),
+const defaultState: ISettingsState = {
+  // firstDate: defaultDate,
+  // secondDate: defaultSecondDate(),
+  pickedBetween: false,
+  dates: [],
   calendar: defaultDate,
 };
 
@@ -31,20 +33,30 @@ export const settingsSlice = createSlice({
   name: "settings",
   initialState: defaultState,
   reducers: {
-    setTwoDates(state: ISettingsState, action: PayloadAction<IDate[]>) {
-      if (action.payload.length > 1) {
-        state.firstDate = action.payload[0];
-        state.secondDate = action.payload[1];
-      } else {
-        console.log("setTwoDates error");
-      }
+    setDates(state: ISettingsState, action: PayloadAction<IDate[]>) {
+      state.dates = action.payload.sort(operatorLessDates);
+      // switch (action.payload.length) {
+      //   case 0:
+      //     break;
+      //   case 1:
+      //     state.firstDate = state.dates[0];
+      //     break;
+      //   default:
+      //     state.firstDate = state.dates[0];
+      //     state.secondDate = state.dates[state.dates.length - 1];
+      //     break;
+      // }
     },
     setCalendar(state: ISettingsState, action: PayloadAction<IDate>) {
       state.calendar = action.payload;
+    },
+    changePickedBetween(state: ISettingsState, action) {
+      state.pickedBetween = !state.pickedBetween;
     },
   },
 });
 
 export type StateStats = ReturnType<typeof settingsSlice.reducer>;
 
-export const { setTwoDates, setCalendar } = settingsSlice.actions;
+export const { setDates, setCalendar, changePickedBetween } =
+  settingsSlice.actions;

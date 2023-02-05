@@ -79,9 +79,11 @@ export interface IAddStat {
 }
 
 export interface ISettingsState {
-  firstDate: IDate;
-  secondDate: IDate;
+  // firstDate: IDate;
+  // secondDate: IDate;
   calendar: IDate;
+  dates: IDate[];
+  pickedBetween: boolean;
 }
 // export enum incomeActionTypes {
 //   add = "add",

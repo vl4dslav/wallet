@@ -40,3 +40,15 @@ export const defaultStats: IAllStats = {
 
 export const daysInMonth = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //dec, jan, ... , dec
 export const week = ["s", "m", "t", "w", "t", "f", "s"];
+
+export const compareDates = (date1: IDate, date2: IDate) =>
+  date1.day === date2.day &&
+  date1.month === date2.month &&
+  date1.year === date2.year;
+
+export const operatorLessDates = (date1: IDate, date2: IDate) => {
+  if (date1.year < date2.year) return -1;
+  if (date1.month < date2.month) return -1;
+  if (date1.day < date2.day) return -1;
+  return 1;
+};

@@ -23,6 +23,27 @@
     }
   }
 
+  .picked {
+    background-color: #eee !important;
+    color: #222 !important;
+    position: relative;
+    // padding: 10px !important;
+    // border-radius: 50% !important;
+    div {
+      width: 90%;
+      height: 90%;
+      border: #222 solid 5px;
+      position: absolute;
+    }
+  }
+
+  .picked:after {
+    width: 10px;
+    height: 10px;
+    background-color: aqua;
+    position: absolute;
+  }
+
   .day {
     cursor: pointer;
     background-color: #222;
@@ -32,4 +53,7 @@
       color: #222;
     }
   }
+}
+.picked {
+  background-color: aqua;
 }
