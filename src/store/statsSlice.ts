@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { defaultStats } from "./defaultValues";
+import { defaultStats, operatorLessDates } from "./defaultValues";
 import { IAllStats, IDate, IExpense, IIncome, statType } from "./interfaces";
 import { compareDates } from "./defaultValues";
+
 const isIncome = (item: IIncome | IExpense): item is IIncome => {
   if (item.typeOfStat === statType.income) return true;
   return false;
@@ -24,6 +25,7 @@ export const statsSlice = createSlice({
         });
         if (newDate) state.stats.push(curr);
       }
+      state.stats.sort((a, b) => operatorLessDates(a.date, b.date));
       state.currentStats = {
         date: action.payload,
         income: [],
@@ -51,10 +53,18 @@ export const statsSlice = createSlice({
         (_, index) => index !== action.payload
       );
     },
+    setTypeOfStat(state: IAllStats, action: PayloadAction<statType>) {
+      state.typeOfStat = action.payload;
+    },
   },
 });
 
 export type StateStats = ReturnType<typeof statsSlice.reducer>;
 
-export const { addStat, deleteIncome, deleteExpense, changeDate } =
-  statsSlice.actions;
+export const {
+  addStat,
+  deleteIncome,
+  deleteExpense,
+  changeDate,
+  setTypeOfStat,
+} = statsSlice.actions;

@@ -1,0 +1,85 @@
+.checkbox-list {
+  border-radius: 2%;
+  width: 30vw;
+  min-height: 55vh;
+  border: solid #1414154b 3px;
+  padding: 1vh 1vw;
+
+  h2 {
+    font-size: 2rem;
+    margin: 1.5vh auto;
+    width: 60%;
+    cursor: pointer;
+
+    &:hover {
+      text-shadow: 2px 3px 3px #1414154b;
+    }
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4vh;
+
+    button {
+      width: 32%;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    input {
+      font-size: 2rem;
+      width: 48%;
+    }
+
+    div {
+      margin: auto 0;
+    }
+  }
+
+  ul {
+    li {
+      height: 5vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: #000000c0 2px solid;
+      cursor: pointer;
+
+      &.color-title {
+        padding: 3vh 0;
+      }
+
+      &.active {
+        background-color: #1414159b;
+
+        .title {
+          color: #eee;
+        }
+
+        &:hover {
+          .title {
+            color: #1414159b;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: #d6d6d645;
+      }
+
+      .color {
+        height: 3vh;
+        width: 3vh;
+        border-radius: 50%;
+        box-shadow: 1px 1px 5px #22222290;
+        margin-left: 5%;
+      }
+
+      .title {
+        color: #222;
+        font-size: 3rem;
+      }
+    }
+  }
+}

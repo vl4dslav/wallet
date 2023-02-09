@@ -34,7 +34,7 @@ const List: React.FC<IListProps> = ({ type }) => {
         return (
           <li key={index}>
             <div className="type-value" onClick={() => changeVisibility(index)}>
-              <div className="type">{statItem.type}</div>
+              <div className="type">{statItem.type.title}</div>
               <div className="value">{`${statItem.value} ${statItem.currency}`}</div>
               <Button
                 content="delete"

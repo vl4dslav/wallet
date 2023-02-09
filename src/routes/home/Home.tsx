@@ -1,13 +1,31 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import List from "../../components/list/List";
 import "./Home.scss";
 import { statType, buttonStyle } from "../../store/interfaces";
 import DateInput from "../../components/dateInput/DateInput";
 import AddStat from "../../components/addStat/AddStat";
 import Button from "../../components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { setTypeOfStat } from "../../store/statsSlice";
 
 const Home: FC = () => {
-  const [typeOfStat, setTypeOfStat] = React.useState<statType | null>(null);
+  const dispatch = useDispatch();
+  const typeOfStat = useSelector((state: RootState) => state.stats.typeOfStat);
+  const changeTypeOfStat = (newStat: statType | null) => {
+    switch (newStat) {
+      case null:
+        dispatch(
+          setTypeOfStat(
+            typeOfStat === statType.income ? statType.expense : statType.income
+          )
+        );
+        break;
+      default:
+        dispatch(setTypeOfStat(newStat));
+    }
+  };
+
   return (
     <div className="container home">
       <div className="home-date">
@@ -17,11 +35,7 @@ const Home: FC = () => {
         <div className={`home-main ${typeOfStat} `}>
           <AddStat
             Addtype={typeOfStat}
-            changeAddType={() =>
-              setTypeOfStat((prev) =>
-                prev === statType.income ? statType.expense : statType.income
-              )
-            }
+            changeAddType={() => changeTypeOfStat(null)}
           />
           <List type={typeOfStat} />
         </div>
@@ -31,13 +45,13 @@ const Home: FC = () => {
             type="button"
             style={buttonStyle.standart}
             content="Add expense"
-            handleClick={() => setTypeOfStat(statType.expense)}
+            handleClick={() => changeTypeOfStat(statType.expense)}
           />
           <Button
             type="button"
             style={buttonStyle.standart}
             content="Add income"
-            handleClick={() => setTypeOfStat(statType.income)}
+            handleClick={() => changeTypeOfStat(statType.income)}
           />
         </div>
       )}

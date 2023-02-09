@@ -13,11 +13,19 @@ $addLineheight: 1.5;
     font-size: $addFontSize;
     width: $addWidth;
     line-height: $addLineheight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover,
     &.opened {
       background-color: #222;
       color: #fff;
+    }
+    .color-box {
+      margin: 0 auto;
+      width: 30px;
+      height: 30px;
     }
   }
 
@@ -25,7 +33,7 @@ $addLineheight: 1.5;
     position: absolute;
     list-style-type: none;
     z-index: 10;
-    li {
+    .dropdown-li {
       cursor: pointer;
       background-color: #fff;
       border: solid #222 2px;
@@ -33,9 +41,19 @@ $addLineheight: 1.5;
       width: $addWidth;
       line-height: $addLineheight;
       transition: all 0.25s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       &:hover {
         background-color: #222;
         color: #fff;
+      }
+
+      .color-box {
+        margin: 0 auto;
+        width: 30px;
+        height: 30px;
       }
     }
   }

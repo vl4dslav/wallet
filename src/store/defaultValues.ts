@@ -1,4 +1,13 @@
-import { IAllStats, IDate } from "./interfaces";
+import { useSelector } from "react-redux";
+import {
+  color,
+  IAllStats,
+  IDate,
+  IStatsWithDate,
+  statInfo,
+  statType,
+} from "./interfaces";
+import { RootState } from "./store";
 
 const currentDate = new Date();
 
@@ -8,6 +17,11 @@ export const defaultDate: IDate = {
   day: currentDate.getDate(),
   month: currentDate.getMonth() + 1,
   year: currentDate.getFullYear(),
+};
+
+export const defaultDate2: IDate = {
+  ...defaultDate,
+  day: 1,
 };
 
 export const correct = (date: IDate) => {
@@ -29,6 +43,8 @@ export const correct = (date: IDate) => {
   }
 };
 
+// const [typeOfStat, setTypeOfStat] = React.useState<statType | null>(null);
+
 export const defaultStats: IAllStats = {
   stats: [],
   currentStats: {
@@ -36,6 +52,7 @@ export const defaultStats: IAllStats = {
     income: [],
     expense: [],
   },
+  typeOfStat: null,
 };
 
 export const daysInMonth = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //dec, jan, ... , dec
@@ -53,4 +70,102 @@ export const operatorLessDates = (date1: IDate, date2: IDate) => {
   if (date1.month > date2.month) return 1;
   if (date1.day < date2.day) return -1;
   return 1;
+};
+
+export const colors = [
+  color.black,
+  color.blue,
+  color.green,
+  color.orange,
+  color.pink,
+  color.purple,
+  color.red,
+  color.silver,
+  color.violet,
+  color.yellow,
+];
+
+export const useSumAndTypeToSum = (type: statType) => {
+  const [stats, dates, typesOfStat, pickedBetween]: [
+    IStatsWithDate[],
+    IDate[],
+    statInfo[],
+    boolean
+  ] = useSelector((state: RootState) => {
+    let allTypesOfStats: statInfo[] = [];
+    switch (type) {
+      case statType.income:
+        allTypesOfStats = state.settings.typesOfStat.income;
+        break;
+      case statType.expense:
+        allTypesOfStats = state.settings.typesOfStat.expense;
+        break;
+    }
+    return [
+      state.stats.stats,
+      state.settings.dates,
+      allTypesOfStats,
+      state.settings.pickedBetween,
+    ];
+  });
+  const typeToSum = new Map<statInfo, number>();
+  let sum = 1;
+  typesOfStat.forEach((item) => typeToSum.set(item, 0));
+  console.log(stats);
+  console.log(typeToSum);
+  if (pickedBetween && dates.length > 0) {
+    sum = stats.reduce((accum, item) => {
+      if (
+        (operatorLessDates(dates[0], item.date) < 0 &&
+          operatorLessDates(item.date, dates[dates.length - 1]) < 0) ||
+        compareDates(dates[0], item.date) ||
+        compareDates(item.date, dates[dates.length - 1])
+      ) {
+        switch (type) {
+          case statType.income:
+            return (accum += item.income.reduce((sum, income) => {
+              const currentValue: number = typeToSum.get(income.type) || 0;
+              console.log(typeToSum);
+              typeToSum.set(income.type, currentValue + income.value);
+              return sum + income.value;
+            }, 0));
+          case statType.expense:
+            return (accum += item.expense.reduce((sum, income) => {
+              const currentValue: number = typeToSum.get(income.type) || 0;
+              typeToSum.set(income.type, currentValue + income.value);
+              return sum + income.value;
+            }, 0));
+        }
+      }
+      return accum;
+    }, 0);
+  }
+  if (!pickedBetween && dates.length > 0) {
+    sum = stats.reduce((accum, item) => {
+      if (
+        dates.reduce((accum, date) => {
+          if (compareDates(date, item.date)) return true;
+          return accum;
+        }, false)
+      ) {
+        switch (type) {
+          case statType.income:
+            return (accum += item.income.reduce((sum, income) => {
+              const currentValue: number = typeToSum.get(income.type) || 0;
+              console.log(typeToSum);
+              typeToSum.set(income.type, currentValue + income.value);
+              return sum + income.value;
+            }, 0));
+          case statType.expense:
+            return (accum += item.expense.reduce((sum, income) => {
+              const currentValue: number = typeToSum.get(income.type) || 0;
+              typeToSum.set(income.type, currentValue + income.value);
+              return sum + income.value;
+            }, 0));
+        }
+      }
+      return accum;
+    }, 0);
+  }
+  return { sum, typeToSum };
 };
