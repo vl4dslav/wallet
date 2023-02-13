@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addStat } from "../../store/statsSlice";
 import { RootState } from "../../store/store";
 
-// const options = ["freelance", "job", "gift"]; ////ooooooppppppptionssssss
-
 const currencyValues = ["RUB", "USD", "EUR", "JPY"];
 
 const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
@@ -19,10 +17,8 @@ const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
     switch (typeOfStat) {
       case statType.income:
         return state.settings.typesOfStat.income.filter((item) => item.active);
-      // .map((item) => item.title);
       case statType.expense:
         return state.settings.typesOfStat.expense.filter((item) => item.active);
-      // .map((item) => item.title);
       default:
         return [];
     }
@@ -63,8 +59,8 @@ const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
       <h2 onClick={changeAddType}>{`Add new ${Addtype}`}</h2>
       <form onSubmit={handleSubmit}>
         <textarea
-          cols={24}
-          rows={8}
+          cols={15}
+          rows={9}
           onChange={handleChangeInput}
           maxLength={150}
           value={description}
