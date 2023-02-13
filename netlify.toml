@@ -1,0 +1,6 @@
+[build]
+    functions = "serverless/"
+
+    command = "CI= npm run build"
+
+    publish = "build"

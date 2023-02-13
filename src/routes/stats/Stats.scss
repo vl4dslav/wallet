@@ -1,0 +1,23 @@
+.stats {
+  button {
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 1vh 1.5vw;
+    font-size: 2vh;
+    margin-bottom: 5vh;
+    border-radius: 5%;
+
+    &:hover {
+      cursor: pointer;
+      color: #eee;
+      background-color: #111;
+      transform: translateY(-0.1vh);
+      box-shadow: 2px 2px 2px #0000004d;
+    }
+  }
+
+  .stats-content {
+    display: flex;
+    justify-content: space-around;
+  }
+}

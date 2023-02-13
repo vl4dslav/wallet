@@ -136,3 +136,12 @@ export interface activeTypeAction {
   index: number;
   type: statType;
 }
+
+export interface ICurrencyExchange {
+  currency: string;
+  value: number;
+}
+
+export interface ICurrencyExchangeProps {
+  list: ICurrencyExchange[];
+}

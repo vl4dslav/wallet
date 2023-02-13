@@ -1,0 +1,15 @@
+.currency-exchange {
+  font-weight: 600;
+  font-size: 2rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-transform: uppercase;
+  }
+}

@@ -10,7 +10,7 @@ import { RootState } from "../../store/store";
 
 // const options = ["freelance", "job", "gift"]; ////ooooooppppppptionssssss
 
-const currencyValues = ["rub", "usd"];
+const currencyValues = ["RUB", "USD", "EUR", "JPY"];
 
 const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
     }
   });
 
-  const [currency, setCurrency] = useState<string>("rub");
+  const [currency, setCurrency] = useState<string>("RUB");
   const [type, setType] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
   const [value, setValue] = useState<number>(0);

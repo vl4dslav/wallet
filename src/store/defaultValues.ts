@@ -2,7 +2,10 @@ import { useSelector } from "react-redux";
 import {
   color,
   IAllStats,
+  ICurrencyExchange,
   IDate,
+  IExpense,
+  IIncome,
   IStatsWithDate,
   statInfo,
   statType,
@@ -85,7 +88,10 @@ export const colors = [
   color.yellow,
 ];
 
-export const useSumAndTypeToSum = (type: statType) => {
+export const useSumAndTypeToSum = (
+  type: statType,
+  currencyList: ICurrencyExchange[]
+) => {
   const [stats, dates, typesOfStat, pickedBetween]: [
     IStatsWithDate[],
     IDate[],
@@ -111,8 +117,23 @@ export const useSumAndTypeToSum = (type: statType) => {
   const typeToSum = new Map<statInfo, number>();
   let sum = 1;
   typesOfStat.forEach((item) => typeToSum.set(item, 0));
-  console.log(stats);
-  console.log(typeToSum);
+  const makeReduce = (sum: number, income: IIncome | IExpense) => {
+    const currentValue: number = typeToSum.get(income.type) || 0;
+    const currencyRate =
+      income.currency === "RUB"
+        ? 1
+        : currencyList.reduce(
+            (acc, currency) =>
+              currency.currency === income.currency ? currency.value : acc,
+            0
+          );
+    typeToSum.set(
+      income.type,
+      currentValue + Math.round(income.value * currencyRate * 100) / 100
+    );
+    return sum + Math.round(income.value * currencyRate * 100) / 100;
+  };
+
   if (pickedBetween && dates.length > 0) {
     sum = stats.reduce((accum, item) => {
       if (
@@ -123,23 +144,15 @@ export const useSumAndTypeToSum = (type: statType) => {
       ) {
         switch (type) {
           case statType.income:
-            return (accum += item.income.reduce((sum, income) => {
-              const currentValue: number = typeToSum.get(income.type) || 0;
-              console.log(typeToSum);
-              typeToSum.set(income.type, currentValue + income.value);
-              return sum + income.value;
-            }, 0));
+            return (accum += item.income.reduce(makeReduce, 0));
           case statType.expense:
-            return (accum += item.expense.reduce((sum, income) => {
-              const currentValue: number = typeToSum.get(income.type) || 0;
-              typeToSum.set(income.type, currentValue + income.value);
-              return sum + income.value;
-            }, 0));
+            return (accum += item.expense.reduce(makeReduce, 0));
         }
       }
       return accum;
     }, 0);
   }
+
   if (!pickedBetween && dates.length > 0) {
     sum = stats.reduce((accum, item) => {
       if (
@@ -150,18 +163,9 @@ export const useSumAndTypeToSum = (type: statType) => {
       ) {
         switch (type) {
           case statType.income:
-            return (accum += item.income.reduce((sum, income) => {
-              const currentValue: number = typeToSum.get(income.type) || 0;
-              console.log(typeToSum);
-              typeToSum.set(income.type, currentValue + income.value);
-              return sum + income.value;
-            }, 0));
+            return (accum += item.income.reduce(makeReduce, 0));
           case statType.expense:
-            return (accum += item.expense.reduce((sum, income) => {
-              const currentValue: number = typeToSum.get(income.type) || 0;
-              typeToSum.set(income.type, currentValue + income.value);
-              return sum + income.value;
-            }, 0));
+            return (accum += item.expense.reduce(makeReduce, 0));
         }
       }
       return accum;

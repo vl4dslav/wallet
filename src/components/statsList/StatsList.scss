@@ -1,0 +1,32 @@
+.stats-list {
+  font-size: 3rem;
+  list-style-type: none;
+  min-width: 30%;
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 4px solid #111;
+    margin-bottom: 3vh;
+
+    &:nth-child(1) {
+      padding-bottom: 2rem;
+      margin-bottom: 5vh;
+      border-bottom: 5px solid #22222299;
+      font-weight: 700;
+    }
+
+    &:last-child {
+      font-size: 4rem;
+      margin-top: 5vh;
+      font-weight: 700;
+    }
+
+    .stats-list-color {
+      height: 3vh;
+      width: 3vh;
+      border-radius: 50%;
+    }
+  }
+}
