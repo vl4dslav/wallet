@@ -3,12 +3,22 @@ import Button from "../button/Button";
 import Dropdown from "../dropdown/Dropdown";
 import NumberInput from "../numberInput/NumberInput";
 import "./AddStat.scss";
-import { buttonStyle, IAddStat, statType } from "../../store/interfaces";
+import {
+  buttonStyle,
+  currencyTypes,
+  IAddStat,
+  statType,
+} from "../../store/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { addStat } from "../../store/statsSlice";
 import { RootState } from "../../store/store";
 
-const currencyValues = ["RUB", "USD", "EUR", "JPY"];
+const currencyValues = [
+  currencyTypes.RUB,
+  currencyTypes.USD,
+  currencyTypes.EUR,
+  currencyTypes.JPY,
+];
 
 const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
   const dispatch = useDispatch();
@@ -24,7 +34,7 @@ const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
     }
   });
 
-  const [currency, setCurrency] = useState<string>("RUB");
+  const [currency, setCurrency] = useState<string>(currencyTypes.RUB);
   const [type, setType] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
   const [value, setValue] = useState<number>(0);
@@ -32,7 +42,7 @@ const AddStat: React.FC<IAddStat> = ({ Addtype, changeAddType }) => {
   const refresh = () => {
     setType(0);
     setDescription("");
-    setCurrency("rub");
+    setCurrency(currencyTypes.RUB);
     setValue(0);
   };
 

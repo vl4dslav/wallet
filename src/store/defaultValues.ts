@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import {
   color,
+  currencyTypes,
   IAllStats,
   ICurrencyExchange,
   IDate,
@@ -114,13 +115,14 @@ export const useSumAndTypeToSum = (
       state.settings.pickedBetween,
     ];
   });
+
   const typeToSum = new Map<statInfo, number>();
   let sum = 1;
   typesOfStat.forEach((item) => typeToSum.set(item, 0));
   const makeReduce = (sum: number, income: IIncome | IExpense) => {
     const currentValue: number = typeToSum.get(income.type) || 0;
     const currencyRate =
-      income.currency === "RUB"
+      income.currency === currencyTypes.RUB
         ? 1
         : currencyList.reduce(
             (acc, currency) =>
@@ -156,9 +158,9 @@ export const useSumAndTypeToSum = (
   if (!pickedBetween && dates.length > 0) {
     sum = stats.reduce((accum, item) => {
       if (
-        dates.reduce((accum, date) => {
+        dates.reduce((acc, date) => {
           if (compareDates(date, item.date)) return true;
-          return accum;
+          return acc;
         }, false)
       ) {
         switch (type) {

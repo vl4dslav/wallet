@@ -145,3 +145,10 @@ export interface ICurrencyExchange {
 export interface ICurrencyExchangeProps {
   list: ICurrencyExchange[];
 }
+
+export enum currencyTypes {
+  RUB = "RUB",
+  USD = "USD",
+  EUR = "EUR",
+  JPY = "JPY",
+}
