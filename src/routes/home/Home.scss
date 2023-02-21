@@ -1,25 +1,24 @@
-.home {
-  .home-main {
-    padding-top: 5vh;
-    display: flex;
-    align-items: flex-start;
+.home-main {
+  padding-top: 5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 
-    &.income {
-      flex-direction: row-reverse;
-    }
-    &.expense {
-      flex-direction: row;
-    }
+  &.income {
+    flex-direction: row-reverse;
   }
+  &.expense {
+    flex-direction: row;
+  }
+}
 
-  .home-btns {
-    margin-top: 20vh;
-    display: flex;
-    justify-content: space-evenly;
-    button {
-      width: 20vw;
-      height: 10vh;
-      font-size: 3rem;
-    }
+.home-btns {
+  margin-top: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+  button {
+    width: 40rem;
+    height: 15rem;
+    font-size: 4rem;
   }
 }

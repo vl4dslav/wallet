@@ -46,7 +46,7 @@ const Stats = () => {
         {type}
       </button>
       <div className="stats-content container">
-        <PieChart type={type} width={500} currencyList={lisT.data || []} />
+        <PieChart type={type} width={350} currencyList={lisT.data || []} />
         <StatsList type={type} currencyList={lisT.data || []} />
         <CurrencyExchange list={lisT.data || []} />
       </div>

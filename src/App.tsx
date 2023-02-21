@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navigation from "./routes/navigation/Navigation";
-import "./App.css";
+import "./App.scss";
 import Home from "./routes/home/Home";
 import Stats from "./routes/stats/Stats";
 import Settings from "./routes/settings/Settings";

@@ -1,0 +1,232 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Inter;
+}
+
+.container {
+  width: 170rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 1800px) {
+  html {
+    font-size: 50%;
+  }
+
+  .addTypes {
+    .checkbox-list {
+      width: 50rem;
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  html {
+    font-size: 40%;
+  }
+
+  .addTypes {
+    .checkbox-list {
+      width: 55rem;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  html {
+    font-size: 30%;
+  }
+
+  .container {
+    width: 150rem;
+  }
+
+  .home-main {
+    .add-stat {
+      h2 {
+        font-size: 6rem;
+      }
+      form {
+        textarea {
+          font-size: 5rem;
+        }
+        .type-and-value {
+          .dropdown-current {
+            div {
+              width: 35rem;
+              font-size: 4rem;
+            }
+            ul {
+              li.dropdown-li {
+                width: 35rem;
+                font-size: 4rem;
+              }
+            }
+          }
+          .number-input {
+            width: 35rem;
+            input {
+              font-size: 4rem;
+              width: 20rem !important;
+            }
+            button {
+              font-size: 5rem;
+              width: 7.5rem;
+            }
+          }
+          button {
+            font-size: 3.5rem;
+            width: 35rem;
+          }
+        }
+      }
+    }
+    ul.list-income,
+    ul.list-expense {
+      min-height: 75rem;
+    }
+  }
+
+  .settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+
+    .addTypes {
+      .checkbox-list {
+        width: 80rem;
+      }
+    }
+  }
+
+  .stats-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10rem;
+    margin-bottom: 10rem;
+
+    .stats-list {
+      font-size: 6rem;
+      width: 60%;
+    }
+    .currency-exchange {
+      font-size: 4rem;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 25%;
+  }
+
+  .container {
+    width: 120rem;
+  }
+
+  .home {
+    .date-section {
+      align-items: center;
+      gap: 10%;
+      h2 {
+        font-size: 5rem;
+      }
+    }
+
+    .home-main {
+      display: flex;
+      gap: 5rem;
+
+      &.income,
+      &.expense {
+        flex-direction: column;
+        align-items: center;
+      }
+      ul.list-income,
+      ul.list-expense {
+        width: 90rem;
+      }
+
+      .stats-content {
+        .stats-list {
+          font-size: 7rem;
+          width: 80%;
+          li {
+            &:last-child {
+              font-size: 6rem;
+            }
+          }
+        }
+        .currency-exchange {
+          font-size: 10rem;
+        }
+      }
+
+      .settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+
+        .addTypes {
+          .checkbox-list {
+            width: 80rem;
+
+            .btn-standart {
+              font-size: 3rem;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      html {
+        font-size: 22%;
+      }
+
+      .container {
+        width: 100rem;
+      }
+
+      .stats-content {
+        .stats-list {
+          font-size: 6.5rem;
+          width: 95%;
+          li {
+            &:last-child {
+              font-size: 9rem;
+            }
+          }
+        }
+        .currency-exchange {
+          font-size: 10rem;
+        }
+      }
+
+      .settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+
+        .addTypes {
+          .checkbox-list {
+            width: 90rem;
+          }
+        }
+      }
+    }
+  }
+}

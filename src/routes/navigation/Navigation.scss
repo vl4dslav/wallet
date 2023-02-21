@@ -2,10 +2,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 3rem 0 5rem;
 
   .title {
-    font-size: 4rem;
+    font-size: 7rem;
     font-weight: 700;
   }
 
@@ -13,9 +13,9 @@ nav {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 600;
-    width: 30vw;
+    width: 60rem;
   }
 
   .nav-link {

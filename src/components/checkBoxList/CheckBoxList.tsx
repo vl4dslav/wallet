@@ -35,8 +35,8 @@ const CheckBoxList: React.FC<ICheckBoxList> = ({
           maxLength={15}
         />
         <Dropdown
-          width="40px"
-          height="40px"
+          width="4rem"
+          height="4rem"
           options={colorDivs}
           currentOption={colorDivs[currentColor]}
           changeCurrentOption={(i) => setCurrentColor(i)}

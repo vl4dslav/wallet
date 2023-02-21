@@ -1,10 +1,10 @@
 .calendar {
-  width: 40vw;
-  height: 50vh;
-  margin: 0 auto;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 50%);
+  width: 70rem;
+  height: 50rem;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  font-size: 3rem;
+  font-size: 4rem;
 
   .calendar-item {
     display: flex;
@@ -40,7 +40,6 @@
   .picked:after {
     width: 10px;
     height: 10px;
-    background-color: aqua;
     position: absolute;
   }
 
@@ -53,7 +52,4 @@
       color: #222;
     }
   }
-}
-.picked {
-  background-color: aqua;
 }

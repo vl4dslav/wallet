@@ -1,13 +1,13 @@
-$addFontSize: 2.5rem;
-$addWidth: 20rem;
+$addFontSize: 3.5rem;
+$addWidth: 22rem;
 $addLineheight: 1.5;
-$marginTop: 3rem;
+$marginTop: 4rem;
 
 .add-stat {
   margin-top: $marginTop;
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     margin-bottom: 3rem;
 
     &:hover {
@@ -24,9 +24,9 @@ $marginTop: 3rem;
       font-family: Inter;
       font-size: $addFontSize;
       line-height: 1.4;
-      border: solid #222 2px;
+      border: solid #222 3px;
       resize: none;
-      margin-right: 1rem;
+      margin-right: 1.5rem;
     }
 
     .type-and-value {
@@ -44,6 +44,10 @@ $marginTop: 3rem;
         font-size: $addFontSize;
         width: $addWidth;
         height: calc($addFontSize * $addLineheight);
+      }
+
+      .number-input {
+        width: $addWidth;
       }
 
       button {

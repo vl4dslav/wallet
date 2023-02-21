@@ -6,17 +6,16 @@ $border: solid #000 3px;
 
 ul.list-income,
 ul.list-expense {
-  min-height: 46vh;
-  min-width: 30vw;
+  min-height: 55rem;
+  width: 50rem;
   list-style: none;
   font-size: $addFontSize;
-  margin: $marginTop auto;
+  margin: $marginTop 0;
   display: flex;
   flex-direction: column;
   border: solid #000 4px;
   li {
     line-height: 1.4;
-    width: 30vw;
 
     &:last-child {
       border: none;
@@ -28,7 +27,6 @@ ul.list-expense {
       font-weight: 600;
       display: flex;
       justify-content: space-between;
-      gap: 1vw;
       transition: all 0.3s;
 
       &:hover {
@@ -38,7 +36,8 @@ ul.list-expense {
       }
 
       button {
-        width: 20%;
+        width: 8rem;
+        height: 4rem;
         font-size: 1.5rem;
       }
     }
@@ -48,7 +47,7 @@ ul.list-expense {
       border-bottom: $border;
       display: block;
       word-wrap: break-word;
-      padding: 2vh 0;
+      padding: 1rem;
     }
   }
 }

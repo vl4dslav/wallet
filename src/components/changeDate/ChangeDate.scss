@@ -1,19 +1,16 @@
 .changeDate {
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  height: 5vh;
-  margin: 5vh 0;
+  justify-content: space-evenly;
+  height: 6rem;
+  margin: 3rem 0 5rem;
 
   .number-input {
-    display: flex;
-    justify-content: center;
     button {
-      font-size: 2.5rem;
-      width: 10%;
+      font-size: 3rem;
+      width: 3rem;
     }
     input {
-      font-size: 3rem;
+      font-size: 4rem;
     }
   }
 }

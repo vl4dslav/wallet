@@ -6,26 +6,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 2rem;
     padding-bottom: 1rem;
     border-bottom: 4px solid #111;
-    margin-bottom: 3vh;
+    margin-bottom: 3rem;
 
     &:nth-child(1) {
       padding-bottom: 2rem;
-      margin-bottom: 5vh;
+      margin-bottom: 5rem;
       border-bottom: 5px solid #22222299;
       font-weight: 700;
     }
 
     &:last-child {
       font-size: 4rem;
-      margin-top: 5vh;
+      margin-top: 5rem;
       font-weight: 700;
     }
 
     .stats-list-color {
-      height: 3vh;
-      width: 3vh;
+      height: 4rem;
+      width: 4rem;
       border-radius: 50%;
     }
   }
