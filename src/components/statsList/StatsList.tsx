@@ -29,7 +29,7 @@ const StatsList: React.FC<{
       })}
       <li key={typeToSum.size}>
         <div className="stats-list-title">Total:</div>
-        <div className="stats-list-sum">{sum}</div>
+        <div className="stats-list-sum">{Math.round(sum * 100) / 100}</div>
       </li>
     </ul>
   );
