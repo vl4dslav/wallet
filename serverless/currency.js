@@ -18,11 +18,6 @@ exports.handler = async (event, context) => {
         `https://api.getgeoapi.com/v2/currency/convert?api_key=${process.env.API_KEY}&from=JPY&to=RUB&format=json`
       )
       .then((resp) => resp.data);
-    //   .then((resp) => {
-    //     console.log(resp);
-    //     return resp.data;
-    //   });
-    console.log([data1, data2, data3], "ssfsfd");
     return {
       statusCode: 200,
       body: JSON.stringify([data1, data2, data3]),

@@ -31,11 +31,11 @@ const Stats = () => {
   }
 
   if (lisT.status === "loading")
-    return <div className="stats-loading">Loading ...</div>;
+    return <div className="stats-loading container">Loading ...</div>;
   if (lisT.status === "error") return <div className="stats-error">Error</div>;
 
   return (
-    <div className="stats">
+    <div className="stats container">
       <button
         onClick={() =>
           setType((prev) =>
@@ -45,7 +45,7 @@ const Stats = () => {
       >
         {type}
       </button>
-      <div className="stats-content container">
+      <div className="stats-content">
         <PieChart type={type} width={350} currencyList={lisT.data || []} />
         <StatsList type={type} currencyList={lisT.data || []} />
         <CurrencyExchange list={lisT.data || []} />
